@@ -1,0 +1,42 @@
+# Change Ranger default terminal
+
+## Instructions
+
+*Special thanks to the user **nnoot** for his comment on:* 
+https://www.reddit.com/r/ranger/comments/p9slb8/change_xterm_to_konsole/
+
+- Search for *ranger desktop entry*: `ranger.desktop`
+it should be somewhere in:
+
+```bash
+~/usr/share/applications/  
+# or
+~/.local/share/applications
+```
+
+You can use these commands to find it:
+```bash
+ls ~/usr/share/applications/ | grep ranger.desktop
+```
+```bash
+ls ~/.local/share/applications | grep ranger.desktop
+```
+
+- Edit the `ranger.desktop` file (you'll need sudo permissions)
+```bash
+[Desktop Entry]
+Type=Application
+Name=ranger
+Comment=Launches the ranger file manager
+Icon=utilities-terminal
+
+# Set this to false:
+Terminal=false
+
+# Place your terminal emulator here to execute ranger like this:
+Exec=alacritty -e ranger
+
+Categories=ConsoleOnly;System;FileTools;FileManager
+MimeType=inode/directory;
+Keywords=File;Manager;Browser;Explorer;Launcher;Vi;Vim;Python
+```
